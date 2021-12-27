@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://ip-lookup-frontend.herokuapp.com/'
+    origins '*'
 
     resource '*',
       headers: :any,

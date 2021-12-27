@@ -3,6 +3,8 @@ import IpInfoActionTypes from '../action-types'
 import { toastError } from '../../utilts/toast'
 import ROUTES from '../../routes'
 
+axios.defaults.headers = { 'Access-Control-Allow-Origin': '*' }
+
 export const fetchIpInfos = () => {
     return async (dispatch) => {
         await axios
