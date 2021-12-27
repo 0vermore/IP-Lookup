@@ -1,0 +1,3 @@
+export const FETCH_IP_INFOS = 'FETCH_IP_INFOS'
+export const CREATE_IP_INFO = 'CREATE_IP_INFO'
+export const DELETE_IP_INFO = 'DELETE_IP_INFO'

@@ -1,0 +1,13 @@
+@import '~antd/dist/antd.css';
+
+li {
+  display: flex;
+  padding: 5px 0 5px 0;
+  list-style: none;
+  align-items: center;
+}
+
+h4 {
+  margin-right: 10px;
+  margin-bottom: 0;
+}
