@@ -5,9 +5,9 @@ export const ipInfoReducer = (state = [], action) => {
     case IpInfoActionTypes.FETCH_IP_INFOS:
       return action.ip_infos
     case IpInfoActionTypes.CREATE_IP_INFO:
-      return [...state, action.ip_info]
+      return [action.ip_info, ...state]
     case IpInfoActionTypes.DELETE_IP_INFO:
-      return state.filter((ip_info) => ip_info.id !== action.index)
+      return state.filter((ip_info) => ip_info.id !== action.id)
     default:
       return state
   }

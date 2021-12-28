@@ -4,12 +4,14 @@ class IpsController < ApplicationController
   before_action :set_ip, only: %i[destroy]
 
   def index
-    @ips = Ip.all
+    @ips = Ip.all.order(created_at: :desc)
     render json: @ips
   end
 
   def create
     new_info = get_ip_info(params[:ip])
+    return render json: { error: { message: new_info } } if new_info.is_a? String
+
     @ip_info = Ip.new(new_info)
 
     if @ip_info.save

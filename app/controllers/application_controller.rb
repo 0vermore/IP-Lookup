@@ -6,10 +6,12 @@ class ApplicationController < ActionController::API
     return unless response
 
     json_response = JSON.parse(response)
+    return json_response['reason'] if json_response['error']
+
     remove_recursively(json_response,
-                                   'version', 'region_code', 'country_code_iso3', 'country_tld',
-                                   'continent_code', 'in_eu', 'utc_offset', 'languages', 'country_area',
-                                   'country_population', 'asn', 'org')
+                       'version', 'region_code', 'country_code_iso3', 'country_tld',
+                       'continent_code', 'in_eu', 'utc_offset', 'languages', 'country_area',
+                       'country_population', 'asn', 'org')
   end
 
   def remove_recursively(hash, *to_remove)

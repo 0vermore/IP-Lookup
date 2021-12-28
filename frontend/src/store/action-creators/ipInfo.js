@@ -21,19 +21,23 @@ export const createIpInfo = (ip) => {
         await axios
             .post(ROUTES.IP_INFOS, { ip: ip })
             .then((response) => {
-                console.log(response.data)
-                dispatch({ type: IpInfoActionTypes.CREATE_IP_INFO, ip_info: response.data })
+                if (response.data.error) {
+                    toastError(response.data.error.message)
+                }
+                else {
+                    dispatch({ type: IpInfoActionTypes.CREATE_IP_INFO, ip_info: response.data })
+                }
             })
             .catch((error) => toastError(error.message))
     }
 }
 
-export const deleteIpInfo = (index) => {
+export const deleteIpInfo = (id) => {
     return async (dispatch) => {
         await axios
-            .delete(ROUTES.IP_INFOS + `/${index}`)
+            .delete(ROUTES.IP_INFOS + `/${id}`)
             .then(() => {
-                dispatch({ type: IpInfoActionTypes.DELETE_IP_INFO, index: index })
+                dispatch({ type: IpInfoActionTypes.DELETE_IP_INFO, id: id })
             })
             .catch((error) => toastError(error.message))
     }
